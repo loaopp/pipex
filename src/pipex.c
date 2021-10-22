@@ -6,7 +6,7 @@
 /*   By: yejeon <yejeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:41:28 by yejeon            #+#    #+#             */
-/*   Updated: 2021/10/22 16:14:31 by yejeon           ###   ########.fr       */
+/*   Updated: 2021/10/22 18:01:08 by yejeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ps_1(int *fd_pipe, char **argv, char **envp)
 
 void	ps_2(int *fd_pipe, char **argv, char **envp)
 {
-	int fd_output;
+	int	fd_output;
 
 	fd_output = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0777);
 	if (-1 == fd_output)
@@ -42,7 +42,7 @@ void	ps_2(int *fd_pipe, char **argv, char **envp)
 	execute(argv[3], envp);
 }
 
-int		main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
 	int	fd_pipe[2];
 	int	pid;
