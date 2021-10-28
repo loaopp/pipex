@@ -6,7 +6,7 @@
 /*   By: yejeon <yejeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 22:05:14 by yejeon            #+#    #+#             */
-/*   Updated: 2021/10/29 03:28:11 by yejeon           ###   ########.fr       */
+/*   Updated: 2021/10/29 04:00:39 by yejeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,15 @@ void	ps_child(char *cmd, char **envp)
 		error_exit("ps_child fork");
 	if (0 == pid)
 	{
-		dup2(fd_pipe[1], STDOUT_FILENO);
+		if (-1 == dup2(fd_pipe[1], STDOUT_FILENO))
+			error_exit("ps_child dup2 STDOUT_FILENO");
 		close(fd_pipe[0]);
 		execute(cmd, envp);
 	}
 	else
 	{
-		dup2(fd_pipe[0], STDIN_FILENO);
+		if (-1 == dup2(fd_pipe[0], STDIN_FILENO))
+			error_exit("ps_child dup2 STDIN_FILENO");
 		close(fd_pipe[1]);
 		waitpid(pid, 0, 0);
 	}
