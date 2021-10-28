@@ -6,7 +6,7 @@
 /*   By: yejeon <yejeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:41:28 by yejeon            #+#    #+#             */
-/*   Updated: 2021/10/29 02:27:41 by yejeon           ###   ########.fr       */
+/*   Updated: 2021/10/29 03:19:09 by yejeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	ps_2(int *fd_pipe, char **argv, char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	int	fd_pipe[2];
+	int		fd_pipe[2];
 	pid_t	pid;
-	int	re;
+	int		re;
 
 	if (argc != 5)
 	{

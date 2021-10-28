@@ -6,7 +6,7 @@
 /*   By: yejeon <yejeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:41:21 by yejeon            #+#    #+#             */
-/*   Updated: 2021/10/22 21:24:48 by yejeon           ###   ########.fr       */
+/*   Updated: 2021/10/29 03:23:04 by yejeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	error_exit(char *msg)
 void	execute(char *argv, char **envp)
 {
 	char	**cmd;
-	char	*path;	//메모리릭 확인
+	char	*path;
 
 	cmd = ft_split(argv, ' ');
 	path = find_path(cmd[0], envp);

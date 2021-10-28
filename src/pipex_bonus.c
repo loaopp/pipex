@@ -6,7 +6,7 @@
 /*   By: yejeon <yejeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 22:05:14 by yejeon            #+#    #+#             */
-/*   Updated: 2021/10/29 02:57:43 by yejeon           ###   ########.fr       */
+/*   Updated: 2021/10/29 03:21:38 by yejeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	usage(void)
 {
 	ft_putstr_fd("ex) ./pipex file1 cmd1 cmd2 cmd3 ... cmdn file2\n", 1);
-	ft_putstr_fd("ex) ./pipex here_doc LIMITER cmd cmd1 file\n", 1);	
+	ft_putstr_fd("ex) ./pipex here_doc LIMITER cmd cmd1 file\n", 1);
 	exit(EXIT_SUCCESS);
 }
 
@@ -45,7 +45,7 @@ void	ps_child(char *cmd, char **envp)
 
 void	here_doc(char *limiter, int argc)
 {
-	int	fd_pipe[2];
+	int		fd_pipe[2];
 	pid_t	pid;
 	char	*line;
 
@@ -117,4 +117,3 @@ int	main(int argc, char **argv, char **envp)
 	usage();
 	return (0);
 }
-

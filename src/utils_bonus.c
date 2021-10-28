@@ -6,7 +6,7 @@
 /*   By: yejeon <yejeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 22:05:17 by yejeon            #+#    #+#             */
-/*   Updated: 2021/10/29 03:12:51 by yejeon           ###   ########.fr       */
+/*   Updated: 2021/10/29 03:23:58 by yejeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_next_line(char **line)
 	int		len;
 	char	ch;
 
-	buf = (char*)malloc(5000);
+	buf = (char *)malloc(5000);
 	if (0 == buf)
 		error_exit("malloc");
 	len = read(0, &ch, 1);
@@ -51,7 +51,7 @@ void	error_exit(char *msg)
 void	execute(char *argv, char **envp)
 {
 	char	**cmd;
-	char	*path;	//메모리릭 확인
+	char	*path;
 
 	cmd = ft_split(argv, ' ');
 	path = find_path(cmd[0], envp);
