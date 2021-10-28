@@ -1,16 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yejeon <yejeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 15:41:21 by yejeon            #+#    #+#             */
-/*   Updated: 2021/10/22 21:24:48 by yejeon           ###   ########.fr       */
+/*   Created: 2021/10/26 22:05:17 by yejeon            #+#    #+#             */
+/*   Updated: 2021/10/29 03:12:51 by yejeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./pipex.h"
+#include "pipex_bonus.h"
+
+int	get_next_line(char **line)
+{
+	char	*buf;
+	int		i;
+	int		len;
+	char	ch;
+
+	buf = (char*)malloc(5000);
+	if (0 == buf)
+		error_exit("malloc");
+	len = read(0, &ch, 1);
+	i = 0;
+	while (len && ch != '\n' && ch != 0)
+	{
+		if (ch != '\n' && ch != 0)
+			buf[i++] = ch;
+		len = read(0, &ch, 1);
+	}
+	buf[i] = '\n';
+	buf[i + 1] = 0;
+	*line = buf;
+	free(buf);
+	return (len);
+}
 
 void	error_exit(char *msg)
 {
