@@ -6,7 +6,7 @@
 #    By: yejeon <yejeon@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/13 15:41:33 by yejeon            #+#    #+#              #
-#    Updated: 2021/10/29 02:45:44 by yejeon           ###   ########.fr        #
+#    Updated: 2021/10/29 04:19:06 by yejeon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ bonus:	$(DIR_OBJ) $(LIBS) $(OBJS_BONUS)
 
 clean:
 	@rm -rf $(OBJS)
+	@rm -rf $(OBJS_BONUS)
 
 fclean:	clean
 	@make fclean -C $(DIR_LIBFT)
@@ -58,4 +59,4 @@ re:	fclean all
 norm:
 	@norminette $(DIR_SRC)*.[ch]
 
-.PHONY: all fclean clean re norm
+.PHONY: all fclean clean re bonus norm
