@@ -6,7 +6,7 @@
 /*   By: yejeon <yejeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 22:05:14 by yejeon            #+#    #+#             */
-/*   Updated: 2021/10/29 03:21:38 by yejeon           ###   ########.fr       */
+/*   Updated: 2021/10/29 03:28:11 by yejeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,7 @@ int	get_fd(char *filename, int type)
 
 int	main(int argc, char **argv, char **envp)
 {
-	int	fd_in;
-	int	fd_out;
+	int	fd_in_out[2];
 	int	i;
 
 	if (5 <= argc)
@@ -99,19 +98,19 @@ int	main(int argc, char **argv, char **envp)
 		if (0 == ft_strncmp(argv[1], "here_doc", 8))
 		{
 			i = 3;
-			fd_out = get_fd(argv[argc - 1], O_APPEND);
+			fd_in_out[1] = get_fd(argv[argc - 1], O_APPEND);
 			here_doc(argv[2], argc);
 		}
 		else
 		{
 			i = 2;
-			fd_in = get_fd(argv[1], O_RDONLY);
-			fd_out = get_fd(argv[argc - 1], O_TRUNC);
-			dup2(fd_in, STDIN_FILENO);
+			fd_in_out[0] = get_fd(argv[1], O_RDONLY);
+			fd_in_out[1] = get_fd(argv[argc - 1], O_TRUNC);
+			dup2(fd_in_out[0], STDIN_FILENO);
 		}
 		while (i < argc - 2)
 			ps_child(argv[i++], envp);
-		dup2(fd_out, STDOUT_FILENO);
+		dup2(fd_in_out[1], STDOUT_FILENO);
 		execute(argv[argc - 2], envp);
 	}
 	usage();
